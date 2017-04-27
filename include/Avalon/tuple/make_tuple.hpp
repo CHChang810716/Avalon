@@ -1,6 +1,6 @@
 #pragma once
 #include <tuple>
-namespace UCW { namespace tuple {
+namespace avalon { namespace tuple {
 
 template<class... Args>
 auto make_tuple( Args&&... args )

@@ -1,6 +1,6 @@
 #include <tuple>
 #include <utility>
-namespace UCW { namespace tuple {
+namespace avalon { namespace tuple {
 // template < std::size_t... Ns , typename... Ts >
 // auto tail_impl( std::index_sequence<Ns...> , std::tuple<Ts...> t )
 // {

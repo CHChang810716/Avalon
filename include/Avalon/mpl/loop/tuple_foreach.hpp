@@ -1,8 +1,8 @@
 #pragma once
 #include <tuple>
 #include <utility>
-#include <UCW/mpl/loop/foreach_exec.hpp>
-namespace UCW { namespace mpl { namespace loop {
+#include <Avalon/mpl/loop/foreach_exec.hpp>
+namespace avalon { namespace mpl { namespace loop {
 template<class Func, class Tuple, std::size_t... ids>
 inline decltype(auto) tuple_foreach_impl( 
       Func&& func

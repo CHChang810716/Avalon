@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include <UCW/mpl/loop.hpp>
+#include <Avalon/mpl/loop.hpp>
 #include <iostream>
-namespace uml = UCW::mpl::loop;
+namespace uml = avalon::mpl::loop;
 TEST ( loop_test, foreach )
 {
     uml::foreach([]( auto&& i )

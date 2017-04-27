@@ -1,7 +1,7 @@
 #pragma once
-#include <UCW/util/mutable.hpp>
+#include <Avalon/util/mutable.hpp>
 #include <tuple>
-namespace UCW { namespace mpl { namespace loop {
+namespace avalon { namespace mpl { namespace loop {
 
 // template<class... Args>
 // struct ForeachExec

@@ -1,3 +1,3 @@
 #pragma once
-#include <UCW/mpl/loop/impl.hpp>
-#include <UCW/mpl/loop/foreach.hpp>
+#include <Avalon/mpl/loop/impl.hpp>
+#include <Avalon/mpl/loop/foreach.hpp>

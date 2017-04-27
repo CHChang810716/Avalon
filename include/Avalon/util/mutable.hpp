@@ -1,7 +1,7 @@
 #pragma once
 #include <utility>
-#include <UCW/util/language/function_alias.hpp>
-namespace UCW { namespace util {
+#include <Avalon/util/language/function_alias.hpp>
+namespace avalon { namespace util {
 
 template<class T>
 struct MutableWrap

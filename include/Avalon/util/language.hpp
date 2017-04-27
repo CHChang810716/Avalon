@@ -1,3 +1,3 @@
 #pragma once
-#include <UCW/util/language/class.hpp>
-#include <UCW/util/language/dir.hpp>
+#include <Avalon/util/language/class.hpp>
+#include <Avalon/util/language/dir.hpp>

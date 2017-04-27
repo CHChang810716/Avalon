@@ -1,8 +1,8 @@
 #pragma once
-#include <UCW/util/mutable.hpp>
+#include <Avalon/util/mutable.hpp>
 
-namespace UCW { namespace mpl {
-namespace uu_ = UCW::util;
+namespace avalon { namespace mpl {
+namespace uu_ = avalon::util;
 
 
 }}

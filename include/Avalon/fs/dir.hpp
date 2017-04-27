@@ -1,6 +1,6 @@
 #pragma once
 #include <boost/filesystem/path.hpp>
-namespace UCW { namespace fs { 
+namespace avalon { namespace fs { 
 
 template<class PATH>
 auto dir(PATH&& path)

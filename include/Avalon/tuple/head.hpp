@@ -2,7 +2,7 @@
 #include <iostream>
 #include <tuple>
 #include <utility>
-namespace UCW { namespace tuple {
+namespace avalon { namespace tuple {
 
 template < class Tuple >
 decltype(auto) head( Tuple&& t )

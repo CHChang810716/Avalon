@@ -1,7 +1,7 @@
 #pragma once
 #include <initializer_list>
-#include <UCW/util/fwd.hpp>
-namespace UCW { namespace mpl { 
+#include <Avalon/util/fwd.hpp>
+namespace avalon { namespace mpl { 
 namespace loop {
 template< class Func, class... Args >
 auto foreach( Func&& f, Args&&... args )
