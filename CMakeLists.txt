@@ -27,7 +27,8 @@ endif()
 
 find_package( Threads )
 include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/config.cmake )
-include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
+include ( ${UNDER_GROUND_CMAKE_DIR}/SDL2/config.cmake )
+# include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
 
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
