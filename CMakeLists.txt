@@ -28,12 +28,16 @@ endif()
 find_package( Threads )
 include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/config.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/SDL2/config.cmake )
-# include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
+include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
 
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
 enable_testing()
-include ( ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/loop_test.cmake )
+file( GLOB app_cmakes ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/*.cmake )
+foreach ( ac ${app_cmakes} )
+    include ( ${ac} )
+endforeach()
+# include ( ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/loop_test.cmake )
 
 # get_cmake_property(_variableNames VARIABLES)
 # foreach (_variableName ${_variableNames})

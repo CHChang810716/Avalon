@@ -43,7 +43,7 @@
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/ucrt",
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/shared",
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/winrt",
-                "C:/MinGW/include",
+                "C:/MinGW/include/c++/6.3.0",
                 "${workspaceRoot}/include",
                 "${workspaceRoot}/stage/include"
             ],
@@ -57,7 +57,10 @@
                     "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/um",
                     "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/ucrt",
                     "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/shared",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/winrt"
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/winrt",
+                    "C:/MinGW/include/c++/6.3.0",
+                    "${workspaceRoot}/include",
+                    "${workspaceRoot}/stage/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
