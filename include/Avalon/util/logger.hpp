@@ -1,6 +1,6 @@
 #pragma once 
 #include <Avalon/util/logger/engine.hpp>
-#include <Avalon/util/logger/OstreamAdapter.hpp>
+#include <Avalon/util/logger/ostream_adapter.hpp>
 namespace avalon{ namespace util{
 
 
