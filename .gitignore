@@ -29,5 +29,6 @@
 *.app
 
 build*
+sbuild*
 
 stage*
