@@ -3,7 +3,7 @@
 namespace avalon{ namespace util{ namespace logger{
 class NullBuffer : public std::streambuf
 {
-  public:
+public:
     int overflow(int c){ return 0; }
 };
 NullBuffer null_buffer;

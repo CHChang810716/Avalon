@@ -1,9 +1,7 @@
 #pragma once
 #include <iostream>
 #include <Avalon/util/logger/null_buffer.hpp>
-#ifndef OPEN_LOG_PORT
-#define OPEN_LOG_PORT msg,warn,err
-#endif
+#include <Avalon/const.hpp>
 namespace avalon{ namespace util{ namespace logger{
 constexpr auto msg  = 0;
 constexpr auto warn = 1;
@@ -19,7 +17,7 @@ constexpr bool is_in_open_port( const int& id)
     }
     return false;
 }
-constexpr std::ostream& id( const int& i, std::ostream& open = std::cout )
+constexpr decltype(auto) id( const int& i, std::ostream& open = std::cout )
 {
     return is_in_open_port(i) ? open : nout;
 }
