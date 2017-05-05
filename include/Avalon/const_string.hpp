@@ -24,11 +24,18 @@ private:
     const CHAR* str_;
 };
 
+template<class CHAR>
+constexpr auto make_const_string(const CHAR* cstr )
+{
+    return ConstStringProto<CHAR>(cstr);
+}
+
 template<class T, class CHAR>
 decltype(auto) operator<<(T&& o, const ConstStringProto<CHAR>& str )
 {
     return o << str.c_str();
 }
 using ConstString = ConstStringProto<char>;
+
     
 }
