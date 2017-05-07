@@ -20,6 +20,7 @@ include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/build.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/SDL2/build.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/boost/build.cmake )
 
+set( CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${DEFAULT_EP_INSTALL_PATH})
 # build Avalon
 ExternalProject_add(AVALON_BUILD
     PREFIX ${CMAKE_BINARY_DIR}/AVALON/
@@ -33,6 +34,7 @@ ExternalProject_add(AVALON_BUILD
         -DSDL2_ROOT:PATH=${SDL2_ROOT}
         -Dsdl2_DIR:PATH=${sdl2_DIR}
         -DBOOST_ROOT:PATH=${BOOST_ROOT}
+        -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
     INSTALL_COMMAND ""
 #    INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
 )
