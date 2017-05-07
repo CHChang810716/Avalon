@@ -1,7 +1,12 @@
 language: cpp
 sudo: required
+git:
+  submodules: false
 compiler: 
   - gcc
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
 install:
   - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
@@ -19,4 +24,4 @@ install:
 script:
   - mkdir build
   - cd build
-  - ${DEPS_DIR}/cmake/bin/cmake .. && make
+  - ${DEPS_DIR}/cmake/bin/cmake .. && make && make test
