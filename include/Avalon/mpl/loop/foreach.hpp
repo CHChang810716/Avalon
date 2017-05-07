@@ -23,11 +23,31 @@
 #include <Avalon/util/fwd.hpp>
 namespace avalon { namespace mpl { 
 namespace loop {
+template<class F>
+struct Helper
+{
+    Helper(F&& f)
+    :f_(FWD(f))
+    {}
+    template<class T>
+    inline int operator()(T&& o)
+    {
+        f_(FWD(o));
+        return 0;
+    }
+private:
+    F f_;
+};
+template<class F>
+auto make_helper(F&& f)
+{
+    return Helper<F>(FWD(f));
+}
 template< class Func, class... Args >
 auto foreach( Func&& f, Args&&... args )
 {
-    return (void)std::initializer_list<int> {
-        ( f(FWD(args)), 0 )...
+    return (void)std::initializer_list<int>{
+        make_helper(FWD(f))(args)...
     };
 }
 
