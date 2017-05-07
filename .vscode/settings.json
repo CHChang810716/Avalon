@@ -1,5 +1,7 @@
 {
-    "files.associations": {
-        "iostream": "cpp"
-    }
+    "licenser.license": "GPLv3",
+    "licenser.author": "Chia-Hua Chang",
+    "licenser.projectName": "Avalon",
+    "licenser.useSingleLineStyle": false,
+    "cmake.sourceDirectory": "${workspaceRoot}/super"
 }
