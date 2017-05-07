@@ -1,5 +1,12 @@
 language: cpp
 sudo: required
+os: linux
+addons: &g++-6
+  apt:
+    packages:
+      - g++-6
+    sources:
+      - ubuntu-toolchain-r-test
 git:
   submodules: false
 compiler: 
