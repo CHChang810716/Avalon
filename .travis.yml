@@ -2,7 +2,7 @@ language: cpp
 matrix:
   include:
     - os: linux
-      addons: &g++-6
+      addons:
         apt:
           packages:
             - g++-6
