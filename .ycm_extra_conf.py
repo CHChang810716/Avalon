@@ -1,3 +1,4 @@
+import os.path
 ##########################################################################
 # Simple ycm_extra_conf.py example                                       #
 # Copyright (C) <2013>  Onur Aslan  <onur@onur.im>                       #
@@ -20,7 +21,7 @@
 ##########################################################################
 
 
-
+__dir__ = os.path.dirname(os.path.abspath(__file__))
 # some default flags
 # for more information install clang-3.2-doc package and
 # check UsersManual.html
@@ -38,21 +39,14 @@ flags = [
 # 'c++',
 '-Wno-unused-variable',
 '-DSINGLE_CPP',
-'-DBRLMMP_JOHN',
-'-DNEW_DATA_POOL',
 
 # include third party libraries
 #'-isystem',
 #'/usr/include/python2.7',
-      '-I', '/home/john/Avalon/include'
-    , '-I', '/usr/include'
-    , '-I', '/usr/include/c++/6'
-    , '-I', '/usr/local/include'
-    , '-I', '/usr/include/clang/3.9/include'
-    , '-I', '/usr/include/python2.7'
-    , '-I', '/usr/local/HDF_Group/HDF5/1.10.0/include'
-    , '-I', '/usr/include/x86_64-linux-gnu/c++/6/'
-    
+      '-I', '/opt/rh/devtoolset-6/root/usr/include/c++/6.2.1/'
+    , '-I', '/opt/rh/devtoolset-6/root/usr/include/c++/6.2.1/x86_64-redhat-linux/' 
+    , '-I', __dir__ + '/include/' 
+    , '-I', __dir__ + '/stage/include/' 
 ]
 
 # youcompleteme is calling this function to get flags
