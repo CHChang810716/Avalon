@@ -33,8 +33,12 @@ include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
 enable_testing()
-file( GLOB unit_test_cmakes ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/*.cmake )
+file( 
+    GLOB_RECURSE unit_test_cmakes 
+    ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/*.cmake 
+)
 foreach ( utc ${unit_test_cmakes} )
+    # show_var( utc )
     include ( ${utc} )
 endforeach()
 # include ( ${CMAKE_SOURCE_DIR}/lib/cmake/unit_test/loop_test.cmake )

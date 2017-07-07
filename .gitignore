@@ -32,3 +32,4 @@ build*
 sbuild*
 
 stage*
+.trash

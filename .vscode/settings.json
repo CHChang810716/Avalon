@@ -3,5 +3,24 @@
     "licenser.author": "Chia-Hua Chang",
     "licenser.projectName": "Avalon",
     "licenser.useSingleLineStyle": false,
-    "cmake.sourceDirectory": "${workspaceRoot}/super"
+    "cmake.sourceDirectory": "${workspaceRoot}/super",
+    "files.associations": {
+        "*.tcc": "cpp",
+        "rope": "cpp",
+        "iosfwd": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "*.ipp": "cpp"
+    },
+    "extension-manager.extensions": [
+        "ajshort.include-autocomplete",
+        "christian-kohler.path-intellisense",
+        "hars.CppSnippets",
+        "ms-vscode.cpptools",
+        "twxs.cmake",
+        "vector-of-bool.cmake-tools",
+        "vscodevim.vim",
+        "webstp.extension-manager",
+        "ymotongpoo.licenser"
+    ]
 }

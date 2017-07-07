@@ -11,15 +11,15 @@ include ( ExternalProject )
 show_var( CMAKE_CXX_COMPILER_ID )
 show_var( CMAKE_SYSTEM_NAME )
 
-set( GTEST_EP_SRC   "PRE_BUILD" )
-set( SDL2_EP_SRC    "PRE_BUILD" )
-set( BOOST_EP_SRC   "PRE_BUILD" )
+ep_option( GTEST_EP_SRC   "PRE_BUILD" )
+ep_option( SDL2_EP_SRC    "PRE_BUILD" )
+ep_option( BOOST_EP_SRC   "PRE_BUILD" )
 
 # build upstream dependency
+show_var( DEFAULT_EP_INSTALL_PATH )
 include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/build.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/SDL2/build.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/boost/build.cmake )
-
 set( CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${DEFAULT_EP_INSTALL_PATH})
 # build Avalon
 ExternalProject_add(AVALON_BUILD
@@ -27,7 +27,7 @@ ExternalProject_add(AVALON_BUILD
     # DEPENDS GTEST_BUILD SDL2_BUILD
     SOURCE_DIR ${CMAKE_SOURCE_DIR}
     BINARY_DIR ${CMAKE_BINARY_DIR}/AVALON/build
-    TEST_BEFORE_INSTALL 1
+#    TEST_BEFORE_INSTALL 1
     CMAKE_ARGS
 #        -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
         -DGTEST_ROOT:PATH=${GTEST_ROOT}
