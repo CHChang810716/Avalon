@@ -17,6 +17,6 @@ before_build:
   - set PATH=C:\MinGW\bin;%PATH%
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "%GENERATOR%" ..
+  - cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "%GENERATOR%" ../super
 
 build_script: cmake --build . --config %CONFIGURATION%
