@@ -24,3 +24,7 @@ before_build:
   - cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "%GENERATOR%" ../super
 
 build_script: cmake --build . --config %CONFIGURATION%
+
+test_script: 
+  - cd AVALON/build
+  - ctest
