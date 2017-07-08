@@ -1,3 +1,3 @@
 [submodule "lib/UnderGround"]
 	path = lib/UnderGround
-	url = git@github.com:CHChang810716/UnderGround.git
+	url = https://github.com/CHChang810716/UnderGround.git
