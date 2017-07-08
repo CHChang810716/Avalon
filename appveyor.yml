@@ -1,5 +1,3 @@
-version: {build}
-
 environment:
   matrix:
   - GENERATOR: MinGW Makefiles
