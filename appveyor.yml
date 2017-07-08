@@ -1,3 +1,5 @@
+image:
+  - Visual Studio 2015
 environment:
   matrix:
   - GENERATOR: MinGW Makefiles
@@ -12,6 +14,8 @@ configuration: Debug
 #   - git submodule update --init --recursive
 
 before_build:
+  - rm -rf build
+  - rm -rf stage
   - git submodule init
   - git submodule update
   - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
