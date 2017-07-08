@@ -22,6 +22,6 @@ before_build:
   - set PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin;%PATH%
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -DCMAKE_C_COMPILER=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin\gcc.exe -DCMAKE_CXX_COMPILER=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin\g++.exe -G "%GENERATOR%" ../super
+  - cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -DCMAKE_C_COMPILER=C:/mingw-w64/x86_64-6.3.0-posix-seh-rt_v5-rev1/gbin/gcc.exe -DCMAKE_CXX_COMPILER=C:/mingw-w64/x86_64-6.3.0-posix-seh-rt_v5-rev1/bin/g++.exe -G "%GENERATOR%" ../super
 
 build_script: cmake --build . --config %CONFIGURATION%
