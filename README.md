@@ -2,6 +2,8 @@
 
 Travis CI status : [![Build Status](https://travis-ci.org/CHChang810716/Avalon.svg?branch=master)](https://travis-ci.org/CHChang810716/Avalon)
 
+AppVeyor CI status : [![Build status](https://ci.appveyor.com/api/projects/status/a0vuj8443yblcsdg/branch/master?svg=true)](https://ci.appveyor.com/project/CHChang810716/avalon/branch/master)
+
 This is a C++ template library with following modules : 
 
 * compiling time controlled logger
