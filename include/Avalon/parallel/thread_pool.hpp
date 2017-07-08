@@ -10,6 +10,7 @@ using ThreadPoolProto = model::distsys::Service<
       boost::lockfree::spsc_queue<model::distsys::Task>
     , algo::schedule::RoundRobinInt<std::size_t>
     , std::thread
+    , std::atomic<bool>
 >;
 
 struct ThreadPool : public ThreadPoolProto 
