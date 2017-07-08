@@ -1,17 +1,3 @@
-# environment:
-#   matrix:
-#   - GENERATOR: MinGW Makefiles
-#     BUILD_TYPE: Release
-# 
-# before_build:
-#   # Workaround for CMake not wanting sh.exe on PATH for MinGW
-#   - set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
-#   - set PATH=C:\MinGW\bin;%PATH%
-#   - mkdir build
-#   - cd build
-#   - cmake -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -G "%GENERATOR%" ..
-# 
-# build_script: cmake --build . --config %BUILD_TYPE%
 environment:
   matrix:
   - GENERATOR: MinGW Makefiles
@@ -19,6 +5,8 @@ environment:
 configuration: Debug
 
 before_build:
+  - git submodule init
+  - git submodule update
   - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
   - set PATH=C:\MinGW\bin;%PATH%
   - mkdir build
