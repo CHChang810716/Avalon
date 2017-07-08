@@ -1,7 +1,7 @@
 environment:
   matrix:
   - GENERATOR: MinGW Makefiles
-  - BUILD_TYPE: Release
+    BUILD_TYPE: Release
 
 before_build:
   # Workaround for CMake not wanting sh.exe on PATH for MinGW
