@@ -32,3 +32,5 @@ script:
   - mkdir build
   - cd build
   - ${DEPS_DIR}/cmake/bin/cmake ../super && make 
+  - cd AVALON/build
+  - ctest

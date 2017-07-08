@@ -41,4 +41,9 @@ ExternalProject_add(AVALON_BUILD
 add_dependencies( AVALON_BUILD SDL2_BUILD )
 add_dependencies( AVALON_BUILD GTEST_BUILD )
 add_dependencies( AVALON_BUILD BOOST_BUILD )
-
+enable_testing()
+add_test( 
+    NAME AVALON_TEST_ALL 
+    COMMAND ctest
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/AVALON/build
+)

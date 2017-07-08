@@ -42,10 +42,11 @@ struct Future : public FutureProto<T>
         );
         if ( itr != service_.core_map_queue_.end() )
         {
-            auto& queue = itr->second;
+            auto& queue = std::get<0>(itr->second);
+            auto& status = std::get<1>(itr->second);
             while( Base::wait_for ( std::chrono::milliseconds(0) ) != std::future_status::ready )
             {
-                SERVICE::run_task( *queue );
+                SERVICE::run_task( *queue, *status );
             }
         }
         else

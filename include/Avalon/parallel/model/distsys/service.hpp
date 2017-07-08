@@ -33,10 +33,10 @@
 #include <Avalon/util/fwd.hpp>
 #include <iostream>
 namespace avalon {  namespace parallel { namespace model { namespace distsys{ 
-template<class QUEUE, class SCH_ALGO, class CORE>
+template<class QUEUE, class SCH_ALGO, class CORE, class WORKER_STATUS>
 class Service
 {
-using This = Service<QUEUE, SCH_ALGO, CORE>;
+using This = Service<QUEUE, SCH_ALGO, CORE, WORKER_STATUS>;
 template<class T, class S>
 friend struct Future;
 public:
@@ -56,10 +56,10 @@ public:
         distribute_task(Task(std::move(task_storage)));
         return fut;
     }
-    static void run_task(QUEUE& q)
+    static void run_task(QUEUE& q, WORKER_STATUS& status)
     {
         Task task;
-        auto status = q.pop( task );
+        status.store(q.pop( task ));
         if ( status )
         {
             task();
@@ -75,38 +75,49 @@ public:
     {
         // create a runner environment
         QUEUE queue(10); // TODO 
+        WORKER_STATUS status;
         auto queue_id = queue_list_.size();
         {
-            std::lock_guard<std::mutex> lock( *p_queue_set_mux_ );
+            std::lock_guard<std::mutex> lock( *p_worker_set_mux_ );
             queue_list_.emplace_back(&queue);
             core_map_queue_.emplace( 
                   helper::get_id( avalon::mpl::Type<CORE>() )
-                , &queue
+                , std::tuple<QUEUE*, WORKER_STATUS*>( &queue, &status )
             );
+            workers_status_.emplace_back(&status);
+            // core_map_status_.emplace(
+            //       helper::get_id( avalon::mpl::Type<CORE>() )
+            //     , &queue
+            // );
             sch_algo_.set_max_id( queue_list_.size() );
         }
         while( !leave_ || !queue.empty() )
         {
-            run_task( queue );
+            run_task( queue, status );
         }
     }
     auto flush() 
     { 
-        for( decltype( queue_list_.size() ) i (0); i > 0; i -- )
+        for( auto i (queue_list_.size()); i > 0; i -- )
         {
             auto ii = i - 1;
             sch_algo_.set_max_id( ii );
-            while( !queue_list_.at(ii)->empty() )
+            while( !queue_list_.at(ii)->empty() || workers_status_.at(ii)->load() )
             {
-                helper::yield(avalon::mpl::Type<CORE>() );
+                helper::yield( avalon::mpl::Type<CORE>() );
             }
         }
         sch_algo_.set_max_id( queue_list_.size() );
     }
     auto leave()
     {
-        leave_ = true;
         flush();
+        leave_ = true;
+
+        std::lock_guard<std::mutex>(*p_worker_set_mux_);
+        queue_list_.clear(); 
+        workers_status_.clear();
+        core_map_queue_.clear();
     }
     ~Service()
     {
@@ -131,9 +142,15 @@ private:
     std::vector<QUEUE*> queue_list_;
     std::map<
           helper::GetIdType<CORE>
-        , QUEUE*
+        , std::tuple<QUEUE*, WORKER_STATUS*>
     > core_map_queue_;
-    std::unique_ptr<std::mutex> p_queue_set_mux_ { new std::mutex };
+    std::vector<WORKER_STATUS*> workers_status_;
+    // std::map<
+    //       helper::GetIdType<CORE>
+    //     , WORKER_STATUS*
+    // > core_map_status_;
+    std::unique_ptr<std::mutex> p_worker_set_mux_ { new std::mutex };
+    
     bool leave_ { false };
 };
 
