@@ -9,6 +9,7 @@ This is a C++ template library with following modules :
 * compiling time controlled logger
 * constant expression string
 * compiling time unrolling loop
+* thread pool
 
 The example usage can be found in Avalon/unit_test.
 
