@@ -27,6 +27,7 @@ TEST( thread_pool, basic_test )
     avalon::parallel::ThreadPool tp = avalon::parallel::make_thread_pool(2);
     std::stringstream expect_not;
     std::stringstream subject;
+    std::mutex subject_mux;
     for ( int i(0); i < 10; i++ )
     {
         for ( int j = 0; j < 10; j ++ )
@@ -34,10 +35,11 @@ TEST( thread_pool, basic_test )
     }
     for ( int i(0); i < 10; i++ )
     {
-        tp.submit( [i, &subject]()
+        tp.submit( [i, &subject, &subject_mux]()
         {
             for ( int j = 0; j < 10; j ++ )
             {
+                std::lock_guard<std::mutex> lock( subject_mux );
                 subject << i ;
                 subject << '\t';
                 subject << j;

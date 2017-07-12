@@ -17,18 +17,16 @@ include ( ${UNDER_GROUND_CMAKE_DIR}/utility/option.cmake                )
 include ( ${UNDER_GROUND_CMAKE_DIR}/utility/test_unit.cmake             )
 include ( ${UNDER_GROUND_CMAKE_DIR}/utility/target_compile_config.cmake )
 
-set( EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/stage/bin )
-
-if( WIN32 )
-    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/bin )
-else()
-    set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/lib )
-endif()
+set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/lib )
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/bin )
+set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/lib )
 
 find_package( Threads )
 include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/config.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/SDL2/config.cmake )
 include ( ${UNDER_GROUND_CMAKE_DIR}/boost/config.cmake )
+find_package( RangeV3 REQUIRED )
+show_var( RANGE_V3_INCLUDE_DIRS )
 
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
