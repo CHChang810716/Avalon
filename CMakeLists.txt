@@ -20,6 +20,7 @@ include ( ${UNDER_GROUND_CMAKE_DIR}/utility/target_compile_config.cmake )
 set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/lib )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/bin )
 set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/stage/lib )
+set( EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/stage/bin )
 
 find_package( Threads )
 include ( ${UNDER_GROUND_CMAKE_DIR}/gtest/config.cmake )
