@@ -31,7 +31,7 @@ flags = [
 
 # std is required
 # clang won't know which language to use compiling headers
-'-std=c++1z',
+'-std=c++14',
 
 # '-x' and 'c++' also required
 # use 'c' for C projects
@@ -43,12 +43,16 @@ flags = [
 # include third party libraries
 #'-isystem',
 #'/usr/include/python2.7',
-      '-I', '/opt/rh/devtoolset-6/root/usr/include/c++/6.2.1/'
+      '-I', __dir__ + '/include'
+    , '-I', __dir__ + '/stage/include'
+    , '-I', '/usr/include'
+    , '-I', '/usr/include/c++/6'
+    , '-I', '/usr/local/include'
+    , '-I', '/usr/include/clang/3.9/include'
+    , '-I', '/usr/include/python2.7'
+    , '-I', '/usr/include/x86_64-linux-gnu/c++/6/'
+    , '-I', '/opt/rh/devtoolset-6/root/usr/include/c++/6.2.1/'
     , '-I', '/opt/rh/devtoolset-6/root/usr/include/c++/6.2.1/x86_64-redhat-linux/'
-    , '-I', '/usr/include/c++/6.3.0/'
-    , '-I', '/usr/include/x86_64-linux-gnu/c++/6.3.0/'
-    , '-I', __dir__ + '/include/'
-    , '-I', __dir__ + '/stage/include/'
 ]
 
 # youcompleteme is calling this function to get flags
