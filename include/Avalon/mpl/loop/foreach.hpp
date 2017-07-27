@@ -47,7 +47,7 @@ template< class Func, class... Args >
 auto foreach( Func&& f, Args&&... args )
 {
     return (void)std::initializer_list<int>{
-        make_helper(FWD(f))(args)...
+        make_helper(FWD(f))(FWD(args))...
     };
 }
 

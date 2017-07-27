@@ -22,7 +22,9 @@
 #pragma once
 #include <tuple>
 #include <utility>
-#include <Avalon/mpl/loop/foreach_exec.hpp>
+#include <Avalon/mpl/loop/foreach.hpp>
+#include <Avalon/util/language.hpp>
+#include <Avalon/tuple.hpp>
 namespace avalon { namespace mpl { namespace loop {
 template<class Func, class Tuple, std::size_t... ids>
 inline decltype(auto) tuple_foreach_impl( 
@@ -31,7 +33,7 @@ inline decltype(auto) tuple_foreach_impl(
     , std::index_sequence< ids... >
 )
 {
-    return foreach_exec( std::forward<Func>(func), std::get<ids>(tuple)... );
+    return foreach( std::forward<Func>(func), avalon::tuple::forward<ids>(tuple)... );
 }
 
 template<class Func, class Tuple>

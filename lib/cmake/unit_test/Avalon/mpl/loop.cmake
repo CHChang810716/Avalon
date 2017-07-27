@@ -1,6 +1,6 @@
 
 set( loop_include_dirs  "${GTEST_INCLUDE_DIRS}" )
-set( loop_link_libs     "${GTEST_LIBRARIES};${CMAKE_THREAD_LIBS_INIT}" )
+set( loop_link_libs     "${GTEST_LIBRARIES};${CMAKE_THREAD_LIBS_INIT};${Boost_LIBRARIES}" )
 set( loop_dep           "GTEST_CONFIG" )
 
 ug_module_test_unit( 

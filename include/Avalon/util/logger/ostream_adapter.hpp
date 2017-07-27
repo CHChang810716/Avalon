@@ -29,6 +29,7 @@
 #include <Avalon/util/fwd.hpp>
 #include <Avalon/type_traits/pointer.hpp>
 #include <Avalon/const.hpp>
+#include <iomanip>
 namespace avalon{ namespace util{ namespace logger{
 
 template<class OSTREAM_PTR>

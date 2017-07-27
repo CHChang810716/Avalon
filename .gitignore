@@ -33,3 +33,4 @@ sbuild*
 
 stage*
 .trash
+*.swp

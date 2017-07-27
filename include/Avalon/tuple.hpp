@@ -20,3 +20,7 @@
 
 #pragma once
 #include <Avalon/tuple/make_tuple.hpp>
+#include <Avalon/tuple/forward.hpp>
+namespace avalon{
+using avalon::tuple::make_tuple;
+}

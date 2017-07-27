@@ -2,10 +2,10 @@
 #include <Avalon/concept/core.hpp>
 namespace avalon{ namespace concept{
 
-struct StaticCastable
+struct StaticCastible
 {
     template<class FROM, class TO>
-    auto requires( FROM&& f, TO&& t ) AVALON_EXPRS(
+    auto requires( FROM f, TO t ) AVALON_EXPRS(
         static_cast<TO>(f)
     );
 };

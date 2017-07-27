@@ -2,7 +2,7 @@
 #include <Avalon/concept/iterator.hpp>
 #include <Avalon/concept/expr_validator.hpp>
 #include <Avalon/util/language.hpp>
-#include <Avalon/concept/static_castable.hpp>
+#include <Avalon/concept/static_castible.hpp>
 #include <Avalon/concept/same.hpp>
 using namespace avalon::concept;
 struct IntPushBackAble
@@ -24,7 +24,7 @@ struct StdVector
         
 };
 struct UserDefineType{};
-template<class T, typename concept_requires< RandomAccessIterator, T>::type = 0 >
+template<class T, require< RandomAccessIterator, T> = 0 >
 int func( T&& o )
 {
     return 1;
@@ -61,11 +61,11 @@ TEST( has_require, basic_test )
 {
     auto sat = HasRequires<
           RandomAccessIterator
-        , void( std::vector<int>::iterator& )
+        , int( std::vector<int>::iterator& )
     >::value;
     auto unsat = HasRequires<
           RandomAccessIterator
-        , void( int )
+        , int( int )
     >::value;
     EXPECT_TRUE( sat );
     EXPECT_FALSE( unsat );
@@ -109,11 +109,11 @@ TEST( define_template_type_concept, vector )
 TEST( concept, static_castable )
 {
     auto sat = satisfied< 
-        StaticCastable
+        StaticCastible
         , bool, int
     >;
     auto unsat = satisfied<
-        StaticCastable
+        StaticCastible
         , int, std::string
     >;
         
@@ -134,3 +134,35 @@ TEST( consept, same )
     EXPECT_FALSE( unsat );
 
 } 
+struct HasBegin
+{
+    template<class T>
+    auto requires( T o ) AVALON_EXPRS(
+        o.begin()
+    );
+};
+struct HasStr
+{
+    template<class T>
+    auto requires( T o ) AVALON_EXPRS(
+        o.str()
+    );
+};
+template<class T, avalon::concept::require<HasBegin, T> = 0>
+auto func4( T o )
+{
+}
+TEST( concept, iterator )
+{
+    auto sat    = satisfied< Iterator, std::vector<int>::iterator>;
+    auto unsat  = satisfied< Iterator, int >;
+    EXPECT_TRUE ( sat   );
+    EXPECT_FALSE( unsat );
+}
+TEST( concept, input_iterator )
+{
+    auto sat    = satisfied< InputIterator, std::vector<int>::iterator>;
+    auto unsat  = satisfied< InputIterator, int >;
+    EXPECT_TRUE ( sat   );
+    EXPECT_FALSE( unsat );
+}

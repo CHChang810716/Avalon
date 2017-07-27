@@ -19,5 +19,5 @@
  */
 
 #pragma once
-#include <Avalon/mpl/loop/impl.hpp>
 #include <Avalon/mpl/loop/foreach.hpp>
+#include <Avalon/mpl/loop/tuple_foreach.hpp>
