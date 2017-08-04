@@ -89,8 +89,8 @@ constexpr struct Transform
             >
         >( FWD( rng ), FWD( func ), upper ); 
     }
-    template<class RNG, class FUNC, class TAG>
-    decltype(auto) operator()(RNG&& rng, FUNC&& func, TAG upper) const
+    template<class RNG, class FUNC, class TAG = boost::random_access_traversal_tag>
+    decltype(auto) operator()(RNG&& rng, FUNC&& func, TAG upper = boost::random_access_traversal_tag{}) const
     {
         return make_transform_range( FWD(rng), FWD(func), upper );
     } 

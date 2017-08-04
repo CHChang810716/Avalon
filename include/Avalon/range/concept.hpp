@@ -3,9 +3,10 @@
 namespace avalon{ namespace range{ namespace concept {
 struct Range
 {
-    template<class C, class I>
-    int requires( const avalon::range::Range<C, I>& o )
-    {}
+    template<class RNG>
+    auto requires( RNG&& rng ) AVALON_EXPRS(
+        *rng.begin(), *rng.end()
+    );
 };
 }
 }}

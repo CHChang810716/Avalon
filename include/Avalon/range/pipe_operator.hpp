@@ -6,7 +6,7 @@
 #include <Avalon/mpl/integer_sequence.hpp>
 #include <Avalon/concept/rvalue_reference.hpp>
 #include <Avalon/mpl/apply.hpp>
-#include <Avalon/util/mutable.hpp>
+#include <Avalon/util/storage.hpp>
 
 namespace avalon{ namespace range{ namespace pipe_operator {
 namespace ac_ = avalon::concept;
@@ -22,11 +22,11 @@ template<
 decltype(auto) operator| ( RNG&& rng, RNG_OP&& op )
 {
     auto make_range = [
-          r=FWD(rng)
+          r=avalon::util::msw( FWD(rng) )
         , rop=avalon::tuple::forward<0>(op)
     ]( auto&&... args ) mutable
     {
-        return FWD(rop)(FWD(r), FWD(args)...);
+        return FWD(rop)(FWD(r.d), FWD(args)...);
     };
     return avalon::mpl::detail::tuple_apply_impl(
           std::move(make_range)

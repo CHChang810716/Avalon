@@ -11,11 +11,13 @@
             "browse": {
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
+                    "/usr/local/include",
+                    "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         },
         {
             "name": "Linux",
@@ -28,43 +30,41 @@
             "browse": {
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
+                    "/usr/local/include",
+                    "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         },
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceRoot}",
-                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/um",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/ucrt",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/shared",
-                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/winrt",
-                "C:/MinGW/include/c++/6.3.0",
-                "${workspaceRoot}/include",
-                "${workspaceRoot}/stage/include"
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++", 
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/x86_64-w64-mingw32", 
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++/backward", 
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include", 
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include-fixed", 
+                "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/../../../../x86_64-w64-mingw32/include",
+                "${workspaceRoot}/stage/include",
+                "${workspaceRoot}/include"
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE"
+                "UNICODE",
+                "__GNUC__=7",
+                "__cdecl=__attribute__((__cdecl__))"
             ],
             "browse": {
                 "path": [
-                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/um",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/ucrt",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/shared",
-                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10586.0/winrt",
-                    "C:/MinGW/include/c++/6.3.0",
-                    "${workspaceRoot}/include",
-                    "${workspaceRoot}/stage/include"
+                    "C:/Program Files/mingw-w64/x86_64-7.1.0-posix-seh-rt_v5-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.1.0/include/c++"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "intelliSenseMode": "clang-x64"
         }
-    ]
+    ],
+    "version": 2
 }

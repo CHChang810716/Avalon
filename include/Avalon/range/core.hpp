@@ -18,17 +18,35 @@ struct RangeProto
 template<class CORE, class ITR>
 struct Range : 
       public RangeProto<CORE>
-    , public boost::iterator_range<ITR>
 {
+    using This = Range<CORE, ITR>;
+    using iterator = ITR;
+    using reference = typename std::iterator_traits< ITR >::reference;
+    using value_type = typename std::iterator_traits< ITR >::value_type;
     Range( CORE&& core )
     : RangeProto<CORE>{ FWD( core ) }
-    , boost::iterator_range<ITR>( 
-        boost::make_iterator_range(
-              ITR( RangeProto<CORE>::core )
-            , ITR( IteratorEnd{}, RangeProto<CORE>::core )
-        )
-    )
     {}
+    auto begin()
+    {
+        return ITR( RangeProto<CORE>::core );
+    }
+    auto end()
+    {
+        return ITR( IteratorEnd{}, RangeProto<CORE>::core );
+    }
+    auto begin() const
+    {
+        return const_cast< This& >( *this ).begin();
+    }
+    auto end() const 
+    {
+        return const_cast< This& >( *this ).end();
+    }
+    template<class I>
+    auto operator[]( I i ) -> decltype( *(begin() + i) )
+    {
+        return *(begin() + i);
+    }
 };
 
 template<class T, class... ARGS> // check T match iterator concept and has create

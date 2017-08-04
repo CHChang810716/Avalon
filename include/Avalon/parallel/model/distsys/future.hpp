@@ -21,6 +21,7 @@
 #pragma once
 #include <future>
 #include <Avalon/parallel/model/distsys/helper/get_id.hpp>
+#include <Avalon/util/language.hpp>
 namespace avalon {  namespace parallel { namespace model { namespace distsys{ 
 
 template<class T>
@@ -35,6 +36,8 @@ struct Future : public FutureProto<T>
     : Base( std::move( base ) )
     , service_ ( service )
     {}
+    DEFAULT_MOVE( Future );
+    DISABLE_COPY( Future );
     decltype(auto) sync()
     {
         auto itr = service_.core_map_queue_.find( 

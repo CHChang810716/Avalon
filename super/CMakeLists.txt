@@ -11,9 +11,14 @@ include ( ExternalProject )
 show_var( CMAKE_CXX_COMPILER_ID )
 show_var( CMAKE_SYSTEM_NAME )
 
-ep_option( GTEST_EP_SRC   "PRE_BUILD" )
+ep_option( GTEST_EP_SRC   "REMOTE_SOURCE" )
 ep_option( SDL2_EP_SRC    "PRE_BUILD" )
 ep_option( BOOST_EP_SRC   "PRE_BUILD" )
+# if( NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Release" )
+#     ep_option( BOOST_EP_SRC   "SYSTEM" )
+# else()
+#     ep_option( BOOST_EP_SRC   "PRE_BUILD" )
+# endif()
 
 # build upstream dependency
 show_var( DEFAULT_EP_INSTALL_PATH )
@@ -35,7 +40,7 @@ ExternalProject_add(AVALON_BUILD
         -DBOOST_ROOT:PATH=${BOOST_ROOT}
         -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}
     INSTALL_COMMAND ""
-    INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
+    # INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
 )
 add_dependencies( AVALON_BUILD SDL2_BUILD )
 add_dependencies( AVALON_BUILD GTEST_BUILD )

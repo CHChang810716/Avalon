@@ -17,7 +17,7 @@ struct HasRequires<C, Ret(Args...)>
     template<typename T>
     static constexpr auto check(T*)
         -> typename std::is_same<
-            decltype( std::declval<T>().requires( std::declval<Args>()... ) ), Ret
+            decltype( std::declval<T>().template requires<Args...>( std::declval<Args>()... ) ), Ret
         >::type;
     
     template<typename>
